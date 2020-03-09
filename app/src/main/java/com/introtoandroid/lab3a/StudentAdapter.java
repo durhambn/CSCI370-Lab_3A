@@ -40,7 +40,7 @@ public class StudentAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View rowView = mInflator.inflate(R.layout.list_view_row, parent, false);
+        View rowView = mInflator.inflate(R.layout.adapterlayout, parent, false);
 
         TextView firstNameView = rowView.findViewById(R.id.first_name);
         TextView lastNameView = rowView.findViewById(R.id.last_name);
