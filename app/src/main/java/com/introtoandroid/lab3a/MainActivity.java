@@ -3,7 +3,10 @@ package com.introtoandroid.lab3a;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -20,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
         list = findViewById(R.id.student);
 
         Student student;
-
 
 
         student = new Student();
@@ -56,6 +58,23 @@ public class MainActivity extends AppCompatActivity {
         StudentAdapter adapter = new StudentAdapter(getApplicationContext(), students);
         list.setAdapter(adapter);
 
-        };
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                Toast t = Toast.makeText(getApplicationContext(), students.get(i).getFirstName() + " selected", Toast.LENGTH_SHORT);
+                t.show();
+            }
+        });
+
+        list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast t = Toast.makeText(getApplicationContext(), students.get(i).getMajor() + " selected", Toast.LENGTH_SHORT);
+                t.show();
+                return true;
+            }
+        });
     }
+}
 
